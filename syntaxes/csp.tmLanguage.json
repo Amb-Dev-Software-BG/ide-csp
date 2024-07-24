@@ -1,0 +1,168 @@
+{
+	"name": "CSP",
+	"fileTypes": ["csp"],
+	"scopeName": "source.csp",
+	"patterns": [
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#storages"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#supports"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#metas"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#punctuations"
+		}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"begin": "--",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.cspm"
+						}
+					},
+					"end": "\n",
+					"name": "comment.line.double-dash.cspm"
+				},
+				{
+					"include": "#block_comment"
+				}
+			]
+		},
+		"block_comment": {
+			"begin": "\\{-",
+			"captures": {
+				"0": {
+					"name": "punctuation.definition.comment.cspm"
+				}
+			},
+			"end": "-\\}",
+			"name": "comment.block.cspm"
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.numeric.integer.csp",
+					"match": "\\b([0-9]+)\\b"
+				},
+				{
+					"name": "constant.language.boolean.csp",
+					"match": "\\b(true|false|True|False)\\b"
+				},
+				{
+					"name": "constant.language.process.csp",
+					"match": "\\b(STOP|DIV|SKIP)\\b"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.csp",
+					"match": "\\b(if|then|else)\\b"
+				},
+				{
+					"name": "keyword.operator.process.csp",
+					"match": "->|\\[\\]|\\|~\\||\\|\\|\\||\\[\\||\\|]|\\[\\[|\\]\\]|\\|\\||;|/\\\\|\\[>|\\\\|\\|\\\\"
+				},
+				{
+					"name": "keyword.operator.channelIO.csp",
+					"match": "\\.|\\!|\\?|\\$"
+				},
+				{
+					"name": "keyword.operator.arithmetic.csp",
+					"match": "(\\+|\\*|\\/|%|(?<!\\-)\\-(?!\\-))"
+				},
+				{
+					"name": "keyword.operator.comparison.csp",
+					"match": "==|\\!=|<|>|<=|>="
+				},
+				{
+					"name": "keyword.operator.logical.csp",
+					"match": "\\b(and|or|not)\\b"
+				},
+				{
+					"name": "keyword.operator.miscellaneous.csp",
+					"match": "{\\||\\|}|\\.\\.|:|#|<-|<->|@|&"
+				},
+				{
+					"name": "keyword.other.refinement.csp",
+					"match": "\\[(FD|F|T)="
+				},
+				{
+					"name": "keyword.other.assertion.csp",
+					"match": ":\\[(deadlock free|deadlock-free|deterministic|divergence free|divergence-free|livelock free|livelock-free|has trace)( \\[F\\]| \\[FD\\])?\\]"
+				}
+			]
+		},
+		"supports": {
+			"patterns": [
+				{
+					"name": "support.function.prelude.csp",
+					"match": "\\b(length|length|null|head|tail|concat|union|inter|diff|Union|Inter|set|Set|Seq|empty|card|member|seq|elem|CHAOS|RUN|TSTOP|TSKIP|WAIT|extensions|productions|deter|failure_watchdog|loop|prioritise|prioritise_nocache|prioritisepo|trace_watchdog|timed_priority|explicate|lazyenumerate|diamond|normal|lazynorm|sbisim|tau_loop_factor|model_compress|wbisim|dbisim|mtransclose|relational_image|relational_inverse_image|transpose|chase|chase_nocache|error|show|emptyMap|mapFromList|mapLookup|mapMember|mapToList|mapUpdate|mapUpdateMultiple|mapDelete|Map)\\b"
+				}
+			]
+		},
+		"storages": {
+			"patterns": [
+				{
+					"name": "storage.type.statement.csp",
+					"match": "\\b(assert|datatype|subtype|let|within|nametype|channel|external|transparent)\\b"
+				},
+				{
+					"name": "storage.type.element.csp",
+					"match": "\\b(Int|Bool|Proc|Events|Char)\\b"
+				}
+			]
+		},
+		"metas": {
+			"patterns": [
+				{
+					"captures": {
+						"1": {
+							"name": "entity.name.function.csp"
+						}
+					},
+					"match": "^\\s*([a-zA-Z0-9_']+)\\s*(\\(.*?\\))\\s*=[^=]",
+					"name": "meta.function.csp"
+				}
+			]
+		},
+		"punctuations": {
+			"pattern": [
+				{
+					"name": "punctuation.separator.comma.cspm",
+					"match": ","
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.csp",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.csp",
+					"match": "\\\\."
+				}
+			]
+		}
+	}
+}

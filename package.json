@@ -1,0 +1,25 @@
+{
+  "name": "ide-csp",
+  "displayName": "ide-csp",
+  "description": "A IDE for CSP development",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "csp",
+      "aliases": ["communication sequencial process", "csp"],
+      "extensions": ["csp"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "csp",
+      "scopeName": "source.csp",
+      "path": "./syntaxes/csp.tmLanguage.json"
+    }]
+  }
+}
